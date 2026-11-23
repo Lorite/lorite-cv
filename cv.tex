@@ -13,7 +13,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[hmargin=1.6cm, vmargin=1.4cm]{geometry}
+\usepackage[margin=1.9cm]{geometry}
 \usepackage{parskip}
 \usepackage{tabularx}
 \usepackage{enumitem}
@@ -34,7 +34,7 @@
 
 % Section: small caps with a rule, as in Pratik's layout.
 \titleformat{\section}{\large\scshape\raggedright\color{accent}}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{8pt}{3pt}
+\titlespacing{\section}{0pt}{12pt}{6pt}
 
 % \entry{title}{dates}{organization}{place}
 \newcommand{\entry}[4]{%
@@ -123,11 +123,11 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 
 \entry{Double MSc, Japan-Europe Master on Advanced Robotics (JEMARO)}{Sep 2020 to Aug 2022}{École Centrale de Nantes and Keio University}{Nantes, FR and Tokyo, JP}
 120 ECTS plus 30 Japanese credits, Erasmus Mundus Joint Master scholarship. Degrees: MSc in Control and Robotics, Advanced Robotics (École Centrale de Nantes), and MScEng in Science for Open and Environmental Systems (Keio University).\\
-{\small\raggedright\textit{Relevant coursework:} Advanced and Robot Programming, Software Architecture for Robotics, Mobile Robots, Modelling of Manipulators, Dynamic Model Based Control, Classical Linear Control, Computer Vision, Artificial Intelligence for Robotics, Optimization Techniques, Signal Processing (Centrale Nantes). Intelligent Machine Systems, Ad-hoc and Sensor Networks, Advanced Natural Language Processing (Keio).\par}
+{\raggedright\textit{Relevant coursework:} Advanced and Robot Programming, Software Architecture for Robotics, Mobile Robots, Modelling of Manipulators, Dynamic Model Based Control, Classical Linear Control, Computer Vision, Artificial Intelligence for Robotics, Optimization Techniques, Signal Processing (Centrale Nantes). Intelligent Machine Systems, Ad-hoc and Sensor Networks, Advanced Natural Language Processing (Keio).\par}
 
 \entry{Double BSc, Computer Software Engineering and Industrial Electronics and Automation Engineering}{Sep 2015 to Jun 2020}{University of Deusto}{Bilbao, ES}
 360 ECTS. Final projects: a multi-platform game app (Java, Django, SQL), and an IoT solution for a board game (PCB design, C, sensors, 3D modeling).\\
-{\small\raggedright\textit{Relevant coursework:} Software Design, Software Process and Quality, Intelligent Systems, Operating Systems, Computer Networks (Software Engineering). Control Systems, Industrial Automation, Programmable Logic, Microprocessors, Electronic Instrumentation, Power Electronics (Industrial Electronics and Automation).\par}
+{\raggedright\textit{Relevant coursework:} Software Design, Software Process and Quality, Intelligent Systems, Operating Systems, Computer Networks, Databases (Software Engineering). Control Systems, Industrial Automation, Advanced Industrial Automation, Programmable Logic, Microprocessors, Electronic Instrumentation, Power Electronics (Industrial Electronics and Automation).\par}
 
 %-------------------------------------------------------------------------------
 \section{Publications}
@@ -144,7 +144,7 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 \section{Teaching and Supervision}
 \begin{itemize}
     \item Guest lecture \textit{Introduction to ROS~2} (4-hour session with hands-on exercises), Advanced Robotics MSc course, IT University of Copenhagen, Nov 2025.
-    \item Co-supervisor, with Andrés Faíña, of MSc theses and research projects at ITU:
+    \item Co-supervisor, with Andrés Faíña, of MSc theses and research projects at the IT University of Copenhagen:
     \begin{itemize}
         \item Aerial resilience: a survivable UAV for autonomous inspection in GPS-denied industrial environments (2025 to 2026).
         \item Design and simulation of a quadruped-based deployment strategy for an aerial inspection drone (2026), with a Helix Lab fellowship.
@@ -172,19 +172,16 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\section{Awards, Volunteering and Other}
+\section{Honors and Awards}
 \begin{itemize}
     \item Two internal innovation awards for hackathon projects, Mobile Industrial Robots, 2022 to 2025.
     \item Erasmus Mundus Joint Master Degree scholarship, European Union, 2020.
     \item Talentia Programme, Bizkaia Talent, 2019.
     \item Amancio Ortega Foundation scholarship: one school year in Ontario, Canada, 2013 to 2014.
-    \item FIRST LEGO League referee and organizer.
-    \item Private teacher for students with cognitive disorders and learning difficulties.
-    \item Driving license.\ifreferees\else\ References available on request.\fi
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\section{Skills and Languages}
+\section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
     \textbf{Programming} & C++, Python, C, Java, bash, SQL \\
     \textbf{Robotics} & ROS and ROS~2, Gazebo, Isaac Sim, Unity, PCL, computer vision, sensor integration (3D cameras, 2D and 3D LiDAR), SLAM and localization \\
@@ -193,13 +190,23 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
     \textbf{Tools} & Linux, git, Docker, Bazel, CI/CD, NVIDIA Jetson, cross-compilation, LaTeX \\
     \textbf{Hardware} & PCB design, PLCs, industrial automation, embedded systems \\
     \textbf{Ways of working} & Agile and Scrum, technical documentation, stakeholder communication \\
-    \textbf{Languages} & Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2) \\
 \end{tabularx}
 
 
-\ifreferees
+%-------------------------------------------------------------------------------
+\section{Languages}
+Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2).
+
+%-------------------------------------------------------------------------------
+\section{Volunteering and Other}
+\begin{itemize}
+    \item FIRST LEGO League referee and organizer.
+    \item Private teacher for students with cognitive disorders and learning difficulties.
+    \item Driving license.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
 \section{References}
-\cvreferences
-\fi
+\ifreferees\cvreferences\else Available on request.\fi
 
 \end{document}
