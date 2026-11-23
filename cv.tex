@@ -1,0 +1,212 @@
+%-------------------------------------------------------------------------------
+% Long CV of Alejandro Lorite Mora
+%
+% Layout adapted from the CV that Pratik Ingle shared (plain article class,
+% one column, selectable text, so application systems can parse it).
+% The one-page visual CV stays in Google Slides.
+%
+% Private data (phone, references) lives in private.tex, which git ignores.
+% Copy private.example.tex to private.tex to add it.
+% Lines marked "% VERIFY" are commented out until Alejandro confirms them.
+%-------------------------------------------------------------------------------
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.7cm]{geometry}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+% Icons: Overleaf has fontawesome5. Without it, the header prints text labels.
+\newif\ifhaveicons
+\IfFileExists{fontawesome5.sty}{\haveiconstrue\usepackage{fontawesome5}}{\haveiconsfalse}
+\newcommand{\icon}[2]{\ifhaveicons#1\else\textsc{#2}\fi\,}
+
+\definecolor{accent}{RGB}{0,51,153}
+\hypersetup{colorlinks, urlcolor=accent, linkcolor=accent}
+
+\pagestyle{empty}
+\setlist[itemize]{nosep, leftmargin=1.2em, label=--}
+
+% Section: small caps with a rule, as in Pratik's layout.
+\titleformat{\section}{\large\scshape\raggedright\color{accent}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{9pt}{4pt}
+
+% \entry{title}{dates}{organization}{place}
+\newcommand{\entry}[4]{%
+    \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
+        \textbf{#1} & #2\\
+        \textit{#3} & #4
+    \end{tabularx}\par}
+
+% \pub{authors}{title}{venue and details}
+\newcommand{\pub}[3]{\item #1. \textit{#2}. #3}
+\newcommand{\me}{\textbf{A.~Lorite Mora}}
+
+% Defaults for private data. private.tex overrides them.
+\newcommand*{\cvphone}{}
+\newcommand{\cvreferences}{Available on request.}
+\IfFileExists{private.tex}{\input{private.tex}}{}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+\begin{center}
+    {\Huge Alejandro Lorite Mora}\\[4pt]
+    {\large Industrial PhD student in Robotics, IT University of Copenhagen and Novo Nordisk}\\[2pt]
+    Copenhagen, Denmark\\[4pt]
+    \href{mailto:a.lorite.mora@gmail.com}{\icon{\faEnvelope}{Email}a.lorite.mora@gmail.com}
+    \ifx\cvphone\empty\else\ $|$\ \icon{\faPhone}{Phone}\cvphone\fi
+    \ $|$\ \href{https://alejandro.lorite.eu}{\icon{\faGlobe}{Web}alejandro.lorite.eu}\\[2pt]
+    \href{https://github.com/Lorite}{\icon{\faGithub}{GitHub}Lorite}
+    \ $|$\ \href{https://www.linkedin.com/in/alejandro-lorite-mora}{\icon{\faLinkedin}{LinkedIn}alejandro-lorite-mora}
+    \ $|$\ \href{https://orcid.org/0000-0002-8704-1248}{\icon{\faOrcid}{ORCID}0000-0002-8704-1248}
+    \ $|$\ \href{https://scholar.google.es/citations?user=M5fEBD8AAAAJ&hl=en}{\icon{\faGraduationCap}{}Scholar}
+\end{center}
+
+%-------------------------------------------------------------------------------
+\section{Profile}
+Robotics engineer and Industrial PhD student. My research is on how a quadruped robot and a drone can inspect large industrial facilities together: cooperative localization between the two robots, manipulation, and drone-assisted tasks. Before the PhD, I worked for two and a half years as a robotics software engineer at Mobile Industrial Robots (MiR), with a focus on 3D vision and LiDAR. I studied robotics in Spain, France and Japan.
+
+%-------------------------------------------------------------------------------
+\section{Experience}
+
+\entry{Industrial PhD Researcher}{Mar 2025 to present}{Novo Nordisk and IT University of Copenhagen (REAL Lab)}{Kalundborg, DK}
+Industrial PhD, also with Helix Lab. Project: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections in Large Industrial Settings}, supervised by Andrés Faíña.
+\begin{itemize}
+    \item Developed markerless localization and active tracking of a nano-UAV from a Boston Dynamics Spot quadruped, in ROS~2 on an NVIDIA Jetson AGX Orin, validated in flight with Crazyflie drones.
+    \item Derived the system requirements from the site's Standard Operating Procedures and from observing the manual inspection and maintenance work.
+    \item Ran the loop from requirements to validation: literature review, simulation in ROS~2, Gazebo and Isaac Sim, then tests at Helix Lab and on Novo Nordisk premises.
+    \item Presented progress to stakeholders: monthly insight sessions, the API quarterly knowledge-sharing session, and a PhD poster for Helix Lab.
+    \item Handled factory data under the site's confidentiality rules, with a record of processing activities and a Privacy Impact Assessment.
+\end{itemize}
+
+\entry{Robotics Software Engineer, R\&D}{Sep 2022 to Feb 2025}{Mobile Industrial Robots A/S (MiR)}{Odense, DK}
+Full software lifecycle for autonomous mobile robots in an international Agile team, specialized in 3D vision and LiDAR. Core team member for the MiR v3 software and the MiR1200 Pallet Jack.
+\begin{itemize}
+    \item Implemented a 5-camera 3D vision system over GMSL on an ARM platform.
+    \item Managed the cross-compilation of the robot's codebase from x86\_64 to ARM.
+    \item Developed point cloud filtering algorithms with PCL for perception and navigation.
+    \item Built C++ and Python components in a ROS framework, with Bazel and Docker on Linux.
+    \item Improved the CI/CD pipeline and wrote unit, integration and system tests.
+    \item Joined the MiR1200 Pallet Jack software team from day one, as a bridge between R\&D and production.
+    \item Technical resource for product demonstrations and trade fairs.
+    \item Received two internal innovation awards for hackathon projects.
+\end{itemize}
+
+\entry{Research Fellow, Robotics and Sensors}{Sep 2021 to Aug 2022}{Keio University, Ohtsuki Laboratory}{Tokyo, JP}
+Human activity and fall detection from LiDAR data for robotic applications (Master's thesis research).
+\begin{itemize}
+    \item Built simulated datasets of human motion in Gazebo and Unity, driven through ROS~2 in Python and C++, and automated their generation.
+    \item Designed and trained convolutional LSTM networks (TensorFlow), and validated them in real time on a physical mobile robot.
+    \item Co-authored two journal articles in \textit{MDPI Sensors} and one IEEE GLOBECOM paper.
+\end{itemize}
+
+\entry{Teaching and Research Assistant}{Sep 2016 to Jun 2020}{University of Deusto, Deusto LearningLab}{Bilbao, ES}
+\begin{itemize}
+    \item Supported programming classes and corrected exercises, labs and tests.
+    \item Managed the EU-funded project OSOS (Open School for Open Societies) in Spain, and fixed bugs in the Kodetu.org web environment.
+    \item Developed the Android, iOS and web versions of the MOON game, plus a physical device to capture the MOON card game.
+    \item Ran robotics and programming workshops for university, high school and primary school students and teachers.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Education}
+
+\entry{PhD in Robotics (Industrial PhD)}{Mar 2025 to Feb 2028 (expected)}{IT University of Copenhagen, with Novo Nordisk}{Copenhagen, DK}
+Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections in Large Industrial Settings}. Supervisor: Andrés Faíña.
+
+\entry{Double MSc, Japan-Europe Master on Advanced Robotics (JEMARO)}{Sep 2020 to Aug 2022}{École Centrale de Nantes and Keio University}{Nantes, FR and Tokyo, JP}
+120 ECTS plus 30 Japanese credits, Erasmus Mundus Joint Master scholarship. Degrees: MSc in Control and Robotics, Advanced Robotics (École Centrale de Nantes), and MScEng in Science for Open and Environmental Systems (Keio University).
+
+\entry{Double BSc, Computer Software Engineering and Industrial Electronics and Automation Engineering}{Sep 2015 to Jun 2020}{University of Deusto}{Bilbao, ES}
+360 ECTS. Final projects: a multi-platform game app (Java, Django, SQL), and an IoT solution for a board game (PCB design, C, sensors, 3D modeling).
+
+%-------------------------------------------------------------------------------
+\section{Publications}
+\input{publications.tex}
+
+%-------------------------------------------------------------------------------
+\section{Conferences and Talks}
+\begin{itemize}
+    \item CLAWAR 2026, United Kingdom: oral presentation of \textit{Towards Quadruped-Provided Localization and Active Tracking for Nano-UAVs}. % VERIFY: city and dates
+    \item IEEE ICRA 2026, Vienna, Austria, 1 to 5 June 2026: attendee.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Teaching and Supervision}
+\begin{itemize}
+    \item Lecture \textit{Introduction to ROS~2}, with hands-on exercises, IT University of Copenhagen, 2025. % VERIFY: course name
+    \item Co-supervisor (with Andrés Faíña) of MSc theses and research projects at the IT University of Copenhagen:
+    \begin{itemize}
+        \item Aerial resilience: a survivable UAV for autonomous inspection in GPS-denied industrial environments (2025 to 2026).
+        \item Design and simulation of a quadruped-based deployment strategy for an aerial inspection drone (2026), with a Helix Lab fellowship.
+        \item Valve identification and grasping for a quadruped robot in an industrial setting (2026).
+        \item Automated object placement verification and correction (research project, 2026).
+        \item Design of a protective caged nano-UAV for narrow environments (2026 to 2027, ongoing).
+    \end{itemize}
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{PhD Courses and Summer Schools}
+\begin{itemize}
+    \item RimA Summer School: Towards Walking Robots in Domestic Environments, FZI, Karlsruhe, Germany, Aug 2026.
+    \item Advanced Topics in Perception for Robotics and Autonomous Systems (34792), Technical University of Denmark, spring 2026.
+    \item Reinforcement Learning, Aalborg University, Mar 2026 (3 ECTS).
+    \item PhD Symposium 2026: Navigating Your PhD Study, IT University of Copenhagen, Mar 2026.
+    \item Introduction to Teaching and Learning for PhDs, IT University of Copenhagen, 2025 (3 ECTS).
+    \item Project and Thesis Supervision, IT University of Copenhagen, 2025.
+    \item Research Code of Conduct and Data Protection (GDPR), IT University of Copenhagen, 2025.
+    \item Entrepreneurship for PhD Students, 2025 (1 ECTS).
+    \item PhD Symposium 2025: The Craft of Writing and Preparing for Publication, IT University of Copenhagen, Mar 2025.
+    % VERIFY: attended? \item IEEE RAS Summer School on Multi-Robot Systems, Czech Technical University, Prague, Jul to Aug 2025 (2 ECTS).
+    % VERIFY: attended? \item Elite Summer School: Advanced Technologies for Designing Robotic Systems for Specific Applications, Odense, 2025 (5 ECTS).
+    % VERIFY: attended? \item Unmanned Aerial Vehicles (UAVs or Drones) in Research and Industry, 2025.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Honors and Awards}
+\begin{itemize}
+    \item Two internal innovation awards for hackathon projects, Mobile Industrial Robots, 2022 to 2025.
+    \item Erasmus Mundus Joint Master Degree scholarship, European Union, 2020.
+    \item Talentia Programme, Bizkaia Talent, 2019.
+    \item Amancio Ortega Foundation scholarship: one school year in Ontario, Canada, 2013 to 2014.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+    \textbf{Programming} & C++, Python, C, Java, bash, SQL \\
+    \textbf{Robotics} & ROS and ROS~2, Gazebo, Isaac Sim, Unity, PCL, computer vision, sensor integration (3D cameras, 2D and 3D LiDAR), SLAM and localization \\
+    \textbf{Robots} & Boston Dynamics Spot, Crazyflie, MiR autonomous mobile robots \\
+    \textbf{Machine learning} & TensorFlow, PyTorch, convolutional LSTMs, object detection and segmentation (YOLO) \\
+    \textbf{Tools} & Linux, git, Docker, Bazel, CI/CD, NVIDIA Jetson, cross-compilation, LaTeX \\
+    \textbf{Hardware} & PCB design, PLCs, industrial automation, embedded systems \\
+    \textbf{Ways of working} & Agile and Scrum, technical documentation, stakeholder communication \\
+\end{tabularx}
+
+%-------------------------------------------------------------------------------
+\section{Languages}
+Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2).
+
+%-------------------------------------------------------------------------------
+\section{Volunteering and Other}
+\begin{itemize}
+    \item FIRST LEGO League referee and organizer.
+    \item Private teacher for students with cognitive disorders and learning difficulties.
+    \item Driving license.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{References}
+\cvreferences
+
+\vfill
+\begin{center}\footnotesize Last updated: \today\end{center}
+
+\end{document}
