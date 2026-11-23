@@ -1,0 +1,51 @@
+# Build cv.pdf on every push to main and publish it as the asset of the rolling "cv-latest" release.
+# Stable download link (used by the website):
+#   https://github.com/Lorite/lorite-cv/releases/download/cv-latest/Alejandro-Lorite-Mora-CV.pdf
+# The runner has no private.tex, so the public PDF has no phone number and says "References: Available on request".
+name: Build and release CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release-cv
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Same pinned TeX Live image as .devcontainer/Dockerfile, so CI and local builds match.
+    container: texlive/texlive:latest@sha256:07e8062637249c4f780ca59f42cc2ed592bc2dc1db4320769406aee3f98aa70e
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build cv.pdf
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error cv.tex
+      - name: Rename
+        run: cp cv.pdf Alejandro-Lorite-Mora-CV.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv
+          path: Alejandro-Lorite-Mora-CV.pdf
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: cv-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: cv
+      - name: Create the release once, then replace its PDF
+        run: |
+          if ! gh release view "$TAG" > /dev/null 2>&1; then
+              gh release create "$TAG" --target "$GITHUB_SHA" --title "CV (latest)" --notes "Built automatically from main."
+          fi
+          gh release upload "$TAG" Alejandro-Lorite-Mora-CV.pdf --clobber
+          gh release edit "$TAG" --notes "Built automatically from commit ${GITHUB_SHA::7} on $(date -u +%Y-%m-%d)."
