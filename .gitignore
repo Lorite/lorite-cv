@@ -1,8 +1,9 @@
 *.aux
+cv.pdf
+*.fdb_latexmk
+*.fls
+latexmk.out
 *.log
 *.out
-*.fls
-*.fdb_latexmk
-*.synctex.gz
-cv.pdf
 private.tex
+*.synctex.gz

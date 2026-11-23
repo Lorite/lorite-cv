@@ -7,14 +7,13 @@
 %
 % Private data (phone, references) lives in private.tex, which git ignores.
 % Copy private.example.tex to private.tex to add it.
-% Lines marked "% VERIFY" are commented out until Alejandro confirms them.
 %-------------------------------------------------------------------------------
 \documentclass[a4paper,11pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[margin=1.7cm]{geometry}
+\usepackage[hmargin=1.6cm, vmargin=1.4cm]{geometry}
 \usepackage{parskip}
 \usepackage{tabularx}
 \usepackage{enumitem}
@@ -50,7 +49,8 @@
 
 % Defaults for private data. private.tex overrides them.
 \newcommand*{\cvphone}{}
-\newcommand{\cvreferences}{Available on request.}
+\newif\ifreferees  % private.tex sets \refereestrue and defines \cvreferences
+\newcommand{\cvreferences}{}
 \IfFileExists{private.tex}{\input{private.tex}}{}
 
 \begin{document}
@@ -59,7 +59,7 @@
 \begin{center}
     {\Huge Alejandro Lorite Mora}\\[4pt]
     {\large Industrial PhD student in Robotics, IT University of Copenhagen and Novo Nordisk}\\[2pt]
-    Copenhagen, Denmark\\[4pt]
+    Copenhagen, Denmark \quad {\footnotesize (updated \today)}\\[4pt]
     \href{mailto:a.lorite.mora@gmail.com}{\icon{\faEnvelope}{Email}a.lorite.mora@gmail.com}
     \ifx\cvphone\empty\else\ $|$\ \icon{\faPhone}{Phone}\cvphone\fi
     \ $|$\ \href{https://alejandro.lorite.eu}{\icon{\faGlobe}{Web}alejandro.lorite.eu}\\[2pt]
@@ -134,14 +134,14 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 %-------------------------------------------------------------------------------
 \section{Conferences and Talks}
 \begin{itemize}
-    \item CLAWAR 2026, United Kingdom: oral presentation of \textit{Towards Quadruped-Provided Localization and Active Tracking for Nano-UAVs}. % VERIFY: city and dates
+    \item CLAWAR 2026, Cranfield University, United Kingdom, 14 to 16 September 2026: 15-minute oral presentation of \textit{Towards Quadruped-Provided Localization and Active Tracking for Nano-UAVs}.
     \item IEEE ICRA 2026, Vienna, Austria, 1 to 5 June 2026: attendee.
 \end{itemize}
 
 %-------------------------------------------------------------------------------
 \section{Teaching and Supervision}
 \begin{itemize}
-    \item Lecture \textit{Introduction to ROS~2}, with hands-on exercises, IT University of Copenhagen, 2025. % VERIFY: course name
+    \item Guest lecture \textit{Introduction to ROS~2} (4-hour session with hands-on exercises), Advanced Robotics MSc course, IT University of Copenhagen, Nov 2025.
     \item Co-supervisor (with Andrés Faíña) of MSc theses and research projects at the IT University of Copenhagen:
     \begin{itemize}
         \item Aerial resilience: a survivable UAV for autonomous inspection in GPS-denied industrial environments (2025 to 2026).
@@ -156,17 +156,17 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 \section{PhD Courses and Summer Schools}
 \begin{itemize}
     \item RimA Summer School: Towards Walking Robots in Domestic Environments, FZI, Karlsruhe, Germany, Aug 2026.
-    \item Advanced Topics in Perception for Robotics and Autonomous Systems (34792), Technical University of Denmark, spring 2026.
+    \item Advanced Topics in Perception for Robotics and Autonomous Systems (34792), Technical University of Denmark, spring 2026 (5 ECTS).
     \item Reinforcement Learning, Aalborg University, Mar 2026 (3 ECTS).
     \item PhD Symposium 2026: Navigating Your PhD Study, IT University of Copenhagen, Mar 2026.
+    \item Research Code of Conduct and Data Protection (GDPR), IT University of Copenhagen, Oct 2025.
     \item Introduction to Teaching and Learning for PhDs, IT University of Copenhagen, 2025 (3 ECTS).
     \item Project and Thesis Supervision, IT University of Copenhagen, 2025.
-    \item Research Code of Conduct and Data Protection (GDPR), IT University of Copenhagen, 2025.
+    \item Elite Summer School: Advanced Technologies for Designing Robotic Systems for Specific Applications, Odense Robotics, Odense, Denmark, Aug 2025 (5 ECTS).
+    \item IEEE RAS Summer School on Multi-Robot Systems, Czech Technical University in Prague, Czech Republic, 30 July to 5 August 2025 (2 ECTS).
+    \item Unmanned Aerial Vehicles (UAVs or Drones) in Research and Industry, Aalborg University, May 2025 (2 ECTS).
     \item Entrepreneurship for PhD Students, 2025 (1 ECTS).
     \item PhD Symposium 2025: The Craft of Writing and Preparing for Publication, IT University of Copenhagen, Mar 2025.
-    % VERIFY: attended? \item IEEE RAS Summer School on Multi-Robot Systems, Czech Technical University, Prague, Jul to Aug 2025 (2 ECTS).
-    % VERIFY: attended? \item Elite Summer School: Advanced Technologies for Designing Robotic Systems for Specific Applications, Odense, 2025 (5 ECTS).
-    % VERIFY: attended? \item Unmanned Aerial Vehicles (UAVs or Drones) in Research and Industry, 2025.
 \end{itemize}
 
 %-------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
 \end{itemize}
 
 %-------------------------------------------------------------------------------
-\section{Skills}
+\section{Skills and Languages}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
     \textbf{Programming} & C++, Python, C, Java, bash, SQL \\
     \textbf{Robotics} & ROS and ROS~2, Gazebo, Isaac Sim, Unity, PCL, computer vision, sensor integration (3D cameras, 2D and 3D LiDAR), SLAM and localization \\
@@ -188,11 +188,8 @@ Thesis: \textit{Teaming up a Quadruped Robot with a Drone for Active Inspections
     \textbf{Tools} & Linux, git, Docker, Bazel, CI/CD, NVIDIA Jetson, cross-compilation, LaTeX \\
     \textbf{Hardware} & PCB design, PLCs, industrial automation, embedded systems \\
     \textbf{Ways of working} & Agile and Scrum, technical documentation, stakeholder communication \\
+    \textbf{Languages} & Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2) \\
 \end{tabularx}
-
-%-------------------------------------------------------------------------------
-\section{Languages}
-Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2).
 
 %-------------------------------------------------------------------------------
 \section{Volunteering and Other}
@@ -200,13 +197,12 @@ Spanish (native), English (C2, IELTS 8.0), Basque (B2), French (B1 to B2).
     \item FIRST LEGO League referee and organizer.
     \item Private teacher for students with cognitive disorders and learning difficulties.
     \item Driving license.
+    \ifreferees\else\item References available on request.\fi
 \end{itemize}
 
-%-------------------------------------------------------------------------------
+\ifreferees
 \section{References}
 \cvreferences
-
-\vfill
-\begin{center}\footnotesize Last updated: \today\end{center}
+\fi
 
 \end{document}

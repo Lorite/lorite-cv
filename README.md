@@ -5,6 +5,5 @@ The long, text-based CV for application portals and academic applications. The o
 - `cv.tex`: the CV. The layout follows the CV that Pratik Ingle shared (plain `article` class, one column).
 - `publications.tex`: the publication list, kept by hand, newest first.
 - `private.tex` (not in git): phone number and references. Start from `private.example.tex`.
-- Lines marked `% VERIFY` are commented out until confirmed.
 
-Build locally with `./build.sh`, or on Overleaf. Overleaf has `fontawesome5`, so the header shows icons there. Without it, the header prints text labels.
+Build with `./build.sh`. It runs `latexmk` in the LaTeX dev container in `.devcontainer/`, which uses the same Dockerfile and pinned TeX Live image as the paper repos, so Docker reuses their layers. If VS Code has the dev container open, the script builds inside it.

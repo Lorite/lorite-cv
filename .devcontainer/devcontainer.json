@@ -1,0 +1,26 @@
+{
+    // Same Dockerfile as the paper repos (same pinned TeX Live digest), so Docker reuses their image layers.
+    "name": "LaTeX CV",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "texlive",
+            "USER_UID": "1000",
+            "USER_GID": "1000"
+        }
+    },
+    "remoteUser": "texlive",
+    "updateRemoteUserUID": true,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop",
+                "streetsidesoftware.code-spell-checker"
+            ],
+            "settings": {
+                "latex-workshop.latex.autoBuild.run": "onFileChange",
+                "latex-workshop.view.pdf.viewer": "tab"
+            }
+        }
+    }
+}
